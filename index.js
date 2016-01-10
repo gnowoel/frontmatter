@@ -18,8 +18,7 @@ module.exports = function(string) {
     content = matches[3];
   }
 
-  data = data || {};
-  content = content || string;
+  if (!data) return;
 
   return { data: data, content: content };
 }
