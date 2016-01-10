@@ -1,4 +1,7 @@
 {
   "name": "frontmatter",
-  "version": "0.0.0"
+  "version": "0.0.0",
+  "dependencies": {
+    "js-yaml": "^3.4.6"
+  }
 }
