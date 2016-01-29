@@ -1,4 +1,4 @@
-# frontmatter
+# frontmatter [![Build Status](https://travis-ci.org/gnowoel/frontmatter.svg?branch=master)](https://travis-ci.org/gnowoel/frontmatter)
 
 Parsing YAML frontmatter from a string.
 
