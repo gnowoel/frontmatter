@@ -1,24 +1,30 @@
 var yaml = require('js-yaml');
 
-module.exports = function(string) {
-  var data, content;
+var pattern = /(^-{3}(?:[\r\n]+)([\w\W]*?)-{3}(?:[\r\n]+))?([\w\W]*)*/;
 
-  var pattern = /^(-{3}(?:\n|\r)([\w\W]+?)(?:\n|\r)-{3})?([\w\W]*)*/;
+module.exports = function(string, opts) {
+  opts = opts || {};
+
+  var parsed = {
+    data: null,
+    content: ''
+  }
+
   var matches = string.match(pattern);
 
   if (matches[2]) {
-    var match = matches[2];
+    var parse = opts.safeLoad ? yaml.safeLoad : yaml.load;
 
     try {
-      data = yaml.load(match);
+      parsed.data = parse(matches[2]);
     } catch(err) {
       throw err;
     }
-
-    content = matches[3];
   }
 
-  if (!data) return;
+  if (matches[3]) {
+    parsed.content = matches[3];
+  }
 
-  return { data: data, content: content };
+  return parsed;
 }
