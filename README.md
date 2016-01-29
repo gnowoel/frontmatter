@@ -10,7 +10,7 @@ $ npm install frontmatter
 
 ## Usage
 
-to parse the YAML frontmatter from a string:
+To parse the YAML frontmatter from a string:
 
 ```javascript
 var frontmatter = require('frontmatter');
@@ -34,7 +34,7 @@ In this case, the `parsed` object would be:
   "data": {
     "title": "Welcome"
   },
-  "content": "\nHello!\n"
+  "content": "Hello!"
 }
 ```
 
