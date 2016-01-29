@@ -1,6 +1,6 @@
 # frontmatter [![Build Status](https://travis-ci.org/gnowoel/frontmatter.svg?branch=master)](https://travis-ci.org/gnowoel/frontmatter)
 
-Parsing YAML frontmatter from a string.
+A simple YAML frontmatter parser.
 
 ## Installation
 
@@ -10,9 +10,9 @@ $ npm install frontmatter
 
 ## Usage
 
-To parse the content of a string:
+to parse the YAML frontmatter from a string:
 
-```
+```javascript
 var frontmatter = require('frontmatter');
 var parsed = frontmatter(content);
 ```
@@ -38,7 +38,8 @@ In this case, the `parsed` object would be:
 }
 ```
 
-Use the `safeLoad` option for untrusted source:
+For untrusted source, the `safeLoad` option should be used:
+
 
 ```javascript
 frontmatter(content, { safeLoad: true });
