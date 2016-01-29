@@ -9,6 +9,14 @@
   "scripts": {
     "test": "NODE_ENV=test mocha"
   },
+  "keywords": [
+    "yaml",
+    "yml",
+    "frontmatter",
+    "front matter",
+    "parse",
+    "parser"
+  ],
   "dependencies": {
     "js-yaml": "^3.4.6"
   },
