@@ -14,10 +14,9 @@ To parse the YAML frontmatter from a string:
 
 ```javascript
 var frontmatter = require('frontmatter');
-var parsed = frontmatter(content);
+var parsed = frontmatter(string);
 ```
-
-As in Jekyll, the YAML frontmatter should be delimited with triple-dash lines and defined at the beginning. For example:
+The YAML frontmatter should be defined at the beginning of the string, within a pair of triple-dash lines. For example:
 
 ```gfm
 ---
@@ -34,12 +33,11 @@ In this case, the `parsed` object would be:
   "data": {
     "title": "Welcome"
   },
-  "content": "Hello!"
+  "content": "\nHello!\n"
 }
 ```
 
 For untrusted source, the `safeLoad` option should be used:
-
 
 ```javascript
 frontmatter(content, { safeLoad: true });
