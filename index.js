@@ -1,6 +1,6 @@
 var yaml = require('js-yaml');
 
-var pattern = /(^-{3}(?:[\r\n]+)([\w\W]*?)-{3}(?:[\r\n]+))?([\w\W]*)*/;
+var pattern = /(^-{3}(?:\r\n|\r|\n)([\w\W]*?)-{3}(?:\r\n|\r|\n))?([\w\W]*)*/;
 
 module.exports = function(string, opts) {
   opts = opts || {};

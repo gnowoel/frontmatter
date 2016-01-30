@@ -5,7 +5,7 @@ var frontmatter = require('..');
 
 describe('frontmatter', function() {
   it('should parse typical contents', function(done) {
-    var filepath = path.join(process.cwd(), 'test/fixture/typical.md');
+    var filepath = path.join(process.cwd(), 'test/sample/typical.md');
 
     fs.readFile(filepath, 'utf8', function(err, content) {
       if (err) throw err;
@@ -13,14 +13,14 @@ describe('frontmatter', function() {
       var parsed = frontmatter(content);
 
       assert.equal(parsed.data.title, 'Welcome');
-      assert.equal(parsed.content.trim(), 'Hello!');
+      assert.equal(parsed.content, '\nHello!\n');
 
       done();
     });
   });
 
   it('should return null data with empty front matter', function(done) {
-    var filepath = path.join(process.cwd(), 'test/fixture/empty.md');
+    var filepath = path.join(process.cwd(), 'test/sample/empty.md');
 
     fs.readFile(filepath, 'utf8', function(err, content) {
       if (err) throw err;
@@ -28,14 +28,14 @@ describe('frontmatter', function() {
       var parsed = frontmatter(content);
 
       assert.equal(parsed.data, null);
-      assert.equal(parsed.content.trim(), 'Hello!');
+      assert.equal(parsed.content, '\nHello!\n');
 
       done();
     });
   });
 
   it('should throw an error with ill-formatted contents', function(done) {
-    var filepath = path.join(process.cwd(), 'test/fixture/error.md');
+    var filepath = path.join(process.cwd(), 'test/sample/error.md');
 
     fs.readFile(filepath, 'utf8', function(err, content) {
       if (err) throw err;
@@ -49,7 +49,7 @@ describe('frontmatter', function() {
   });
 
   it('should load even untrusted contents', function(done) {
-    var filepath = path.join(process.cwd(), 'test/fixture/untrusted.md');
+    var filepath = path.join(process.cwd(), 'test/sample/untrusted.md');
 
     fs.readFile(filepath, 'utf8', function(err, content) {
       if (err) throw err;
@@ -57,14 +57,14 @@ describe('frontmatter', function() {
       var parsed = frontmatter(content);
 
       assert.equal(typeof parsed.data.toString, 'function');
-      assert.equal(parsed.content.trim(), '');
+      assert.equal(parsed.content, '');
 
       done();
     });
   });
 
   it('should throw an error when loading untrusted contents with safeLoad', function(done) {
-    var filepath = path.join(process.cwd(), 'test/fixture/untrusted.md');
+    var filepath = path.join(process.cwd(), 'test/sample/untrusted.md');
 
     fs.readFile(filepath, 'utf8', function(err, content) {
       if (err) throw err;
