@@ -12,14 +12,16 @@ describe('frontmatter', function() {
 
       var parsed = frontmatter(content);
 
+      assert.equal(parsed.data.layout, 'default');
       assert.equal(parsed.data.title, 'Welcome');
+      assert.equal(parsed.data.date, '2016-01-30 12:30:06 +0800');
       assert.equal(parsed.content, '\nHello!\n');
 
       done();
     });
   });
 
-  it('should return null data with empty front matter', function(done) {
+  it('should return empty data with empty front matter', function(done) {
     var filepath = path.join(process.cwd(), 'test/sample/empty.md');
 
     fs.readFile(filepath, 'utf8', function(err, content) {
@@ -27,8 +29,23 @@ describe('frontmatter', function() {
 
       var parsed = frontmatter(content);
 
-      assert.equal(parsed.data, null);
+      assert.equal(Object.keys(parsed.data), 0);
       assert.equal(parsed.content, '\nHello!\n');
+
+      done();
+    });
+  });
+
+  it('should return null data if front matter undefined', function(done) {
+    var filepath = path.join(process.cwd(), 'test/sample/null.md');
+
+    fs.readFile(filepath, 'utf8', function(err, content) {
+      if (err) throw err;
+
+      var parsed = frontmatter(content);
+
+      assert.equal(parsed.data, null);
+      assert.equal(parsed.content, 'Hello!\n');
 
       done();
     });
