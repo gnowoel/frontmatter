@@ -5,7 +5,7 @@ var frontmatter = require('..');
 
 describe('frontmatter', function() {
   it('should parse typical contents', function(done) {
-    var filepath = path.join(process.cwd(), 'test/sample/typical.md');
+    var filepath = path.join(__dirname, 'sample/typical.md');
 
     fs.readFile(filepath, 'utf8', function(err, content) {
       if (err) throw err;
@@ -22,7 +22,7 @@ describe('frontmatter', function() {
   });
 
   it('should return empty data with empty front matter', function(done) {
-    var filepath = path.join(process.cwd(), 'test/sample/empty.md');
+    var filepath = path.join(__dirname, 'sample/empty.md');
 
     fs.readFile(filepath, 'utf8', function(err, content) {
       if (err) throw err;
@@ -37,7 +37,7 @@ describe('frontmatter', function() {
   });
 
   it('should return null data if front matter undefined', function(done) {
-    var filepath = path.join(process.cwd(), 'test/sample/null.md');
+    var filepath = path.join(__dirname, 'sample/null.md');
 
     fs.readFile(filepath, 'utf8', function(err, content) {
       if (err) throw err;
@@ -52,7 +52,7 @@ describe('frontmatter', function() {
   });
 
   it('should throw an error with ill-formatted contents', function(done) {
-    var filepath = path.join(process.cwd(), 'test/sample/error.md');
+    var filepath = path.join(__dirname, 'sample/error.md');
 
     fs.readFile(filepath, 'utf8', function(err, content) {
       if (err) throw err;
@@ -66,7 +66,7 @@ describe('frontmatter', function() {
   });
 
   it('should load even untrusted contents', function(done) {
-    var filepath = path.join(process.cwd(), 'test/sample/untrusted.md');
+    var filepath = path.join(__dirname, 'sample/untrusted.md');
 
     fs.readFile(filepath, 'utf8', function(err, content) {
       if (err) throw err;
@@ -81,7 +81,7 @@ describe('frontmatter', function() {
   });
 
   it('should throw an error when loading untrusted contents with safeLoad', function(done) {
-    var filepath = path.join(process.cwd(), 'test/sample/untrusted.md');
+    var filepath = path.join(__dirname, 'sample/untrusted.md');
 
     fs.readFile(filepath, 'utf8', function(err, content) {
       if (err) throw err;
